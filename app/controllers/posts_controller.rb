@@ -1,16 +1,19 @@
 class PostsController < ApplicationController
  def index
-    posts = Post.all
+    @posts = Post.all
   	#@posts = Post.ordered_by_reverse_created_at.all
+    authorize @posts
  end
 
  def new
     @post = Post.new
+    authorize @post
  end
 
  def create
     @post = Post.new(params.require(:post).permit(:title, :body))
     @post.user = current_user
+    authorize @post
     if @post.save
        flash[:notice] = "Post was saved."
        redirect_to @post
@@ -22,14 +25,17 @@ class PostsController < ApplicationController
 
  def show
     @post = Post.find(params[:id])
+    authorize @post
  end
   
  def edit
     @post = Post.find(params[:id])
+    authorize @post
  end
 
  def update
     @post = Post.find(params[:id])
+    authorize @post
     if @post.update_attributes(params.require(:post).permit(:title, :body))
        flash[:notice] = "Post was updated."
        redirect_to @post

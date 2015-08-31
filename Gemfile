@@ -35,6 +35,9 @@ gem 'devise'
 # store Sendgrid and Devise credentials as environment variables
 gem 'figaro', '1.0'
 
+# authoriztion
+gem 'pundit'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
