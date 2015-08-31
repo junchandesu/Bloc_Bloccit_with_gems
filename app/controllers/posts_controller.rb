@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
  def index
-  	@posts = Post.all
+    posts = Post.all
+  	#@posts = Post.ordered_by_reverse_created_at.all
  end
 
  def new
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
 
  def create
     @post = Post.new(params.require(:post).permit(:title, :body))
+    @post.user = current_user
     if @post.save
        flash[:notice] = "Post was saved."
        redirect_to @post
