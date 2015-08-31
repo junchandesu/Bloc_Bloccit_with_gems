@@ -29,6 +29,12 @@ gem 'bootstrap-sass'
 # create fake data
 gem 'faker'
 
+# user authentication system
+gem 'devise'
+
+# store Sendgrid and Devise credentials as environment variables
+gem 'figaro', '1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
