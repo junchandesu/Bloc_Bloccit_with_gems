@@ -11,6 +11,14 @@
    user.skip_confirmation!
    user.save!
  end
+  user = User.new(
+     name:     'junko',
+     email:    'aliciajace@gmail.com',
+     password: 'helloworld',
+     created_at: Faker::Date.between(7.days.ago, 5.days.ago)
+   )
+   user.skip_confirmation!
+   user.save!
  users = User.all
  
  # Note: by calling `User.new` instead of `create`,
@@ -20,6 +28,15 @@
  # to avoid triggering an confirmation email when the User is saved.
  
  # The `save` method then saves this User to the database.
+ # Create Topics
+ 15.times do
+   Topic.create!(
+     name:         Faker::Lorem.sentence,
+     description:  Faker::Lorem.paragraph
+   )
+ end
+ topics = Topic.all
+
 
  # Create Posts
  50.times do
@@ -27,6 +44,7 @@
      user:   users.sample,
      title:  Faker::Lorem.sentence,
      body:   Faker::Lorem.paragraph,
+     topic:  topics.sample,
      created_at: Faker::Date.between(5.days.ago, Date.today)
    )
  end
@@ -70,12 +88,7 @@
  member.skip_confirmation!
  member.save!
 
- user = User.first
- user.skip_confirmation!
- user.update_attributes!(
-   password: 'helloworld',
-   email: 'aliciajace@gmail.com'
- )
+
 
  puts "Seed finished"
  puts "#{User.count} users created"
