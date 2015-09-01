@@ -1,13 +1,14 @@
  <h1><%= markdown_to_html @post.title %></h1>
 
  <div class="row">
-   <div class="col-md-8">
+   <div class="col-md-7">
      <small>
        <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= @post.user.name %>
      </small>
      <p><%= markdown_to_html @post.body %></p>
+       <%= render partial: 'comments/comment', collection: @comments %>
    </div>
    <div class="col-md-4">
      <% if policy(@post).edit? %>
@@ -15,3 +16,9 @@
      <% end %>
    </div>
  </div>
+<% if policy(@comments.new).create? %>
+ <div class="row">
+  <h4>Let's submit a new comment(minimum 5 letters required):</h4>
+  <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comments.new } %>
+ </div>
+<% end %> 
