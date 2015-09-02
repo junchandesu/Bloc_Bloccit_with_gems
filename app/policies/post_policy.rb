@@ -2,5 +2,5 @@
  	def index?
  		true     
    end
-
+ 
  end
