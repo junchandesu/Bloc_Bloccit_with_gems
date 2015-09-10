@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # remove I18n.enforce_available_locales warning. 
+  config.i18n.enforce_available_locales = true
 end

@@ -1,17 +1,16 @@
-describe Vote do 
-	describe "validations" do 
-		describe "value validations" do 
+require 'rails_helper'
+
+describe Vote  do 
+	describe "value validation" do
+
 			it "only allows -1 or 1 as values" do
-				one = Vote.create(valid: 1)
-				expect(one.valid?) eql(true)
+				two = Vote.new(value: 2)
+				expect(two.valid?).to be_falsey			
+			end
 
-				minus_one = Vote.create(valid: -1)
-				minus_one.should be_true
-
-				two = Vote.create(valid: 2)
-				expect(two.valid?) eql(false)
+			it "allows 1 as value" do
+				one = Vote.new(value: 1)
+				expect(one.valid?).to be true
 			end
 		end
-	end
-	
 end

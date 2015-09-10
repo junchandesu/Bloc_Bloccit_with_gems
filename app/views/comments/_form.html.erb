@@ -1,5 +1,5 @@
 <div class="col-md-6">
-	<%= form_for [topic, post, comment] do |f| %>
+	<%= form_for [post, comment] do |f| %>
 		<% if comment.errors.any? %>
 		 <div class="alert alert-danger">
 		 	<h4>There are <%= pluralize(comment.errors.count, "error") %>.</h4>
