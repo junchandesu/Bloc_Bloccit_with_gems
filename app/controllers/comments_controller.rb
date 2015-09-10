@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = current_user.comments.build(comment_params)
 		@post = Post.find(params[:post_id])
 		@topic = @post.topic_id
+		@comment = @post.comments.build(comment_params)
+		@comment.user = current_user
 		authorize @comment
 		if @comment.save
 			flash[:notice] = "Success commented."
