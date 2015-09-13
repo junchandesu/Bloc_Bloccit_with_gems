@@ -10,7 +10,8 @@
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= @post.user.name %>
      </small>
-       <%= render partial: 'comments/comment', collection: @comments %>
+     <div>
+    </div>
    </div>
    <div class="col-md-4">
      <% if policy(@post).edit? %>
@@ -19,17 +20,17 @@
      <% if policy(@post).destroy? %>
       <%= link_to 'Delete Post', [@topic, @post], method: :delete, class: 'btn btn-danger', data:{confirmation: 'Are you sure you want to delete this Post?'} %>
     <% end %>
-   </div>
- </div>
-
-
-   <div>
      <h3><%= pluralize(@post.points, 'point') %></h3>
-     <small>
+      <small>
        <%= pluralize(@post.up_votes, 'up vote') %>,
        <%= pluralize(@post.down_votes, 'down vote') %>
      </small>
+  
+   <%= render partial: "favorites/favorite", locals: { post: @post } %>
    </div>
+ </div>
+
+ <%= render partial: 'comments/comment', collection: @comments %>
 <% if policy(@comments.new).create? %>
  <div class="row">
   <h4>Let's submit a new comment(minimum 5 letters required):</h4>

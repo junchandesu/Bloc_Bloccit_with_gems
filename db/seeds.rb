@@ -49,6 +49,7 @@
    )
       # set the created_at to a time within the past year
    post.update_rank
+   post.create_vote
  end
  posts = Post.all
 
