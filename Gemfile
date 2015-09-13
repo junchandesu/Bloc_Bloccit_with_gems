@@ -72,6 +72,8 @@ group :development, :test do
 
   # TDD
    gem 'rspec-rails', '~> 3.0'
+  # a popular tool for Rails feature specs
+   gem 'capybara'
 end
 
 group :production do
