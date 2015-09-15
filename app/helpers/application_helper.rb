@@ -26,5 +26,12 @@ module ApplicationHelper
  def down_vote_link_classes(post)
   (current_user.voted(post) && current_user.voted(post).down_vote?)
  end
+ 
 
+ def comment_url_helper(comment)
+   post = comment.post
+   [post, comment]
+ end
+
+  
 end

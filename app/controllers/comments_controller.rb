@@ -32,6 +32,13 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	def show
+    	@post = Post.find(params[:id])
+    	@topic = Topic.find(params[:topic_id])
+    	@comments = @post.comments
+    	authorize @post
+    end
+
 	private
 
 	def comment_params
