@@ -51,6 +51,12 @@ gem 'redcarpet'
  # pagination
  gem 'will_paginate', '~> 3.0.5'
 
+ # performance monitoring tool
+ gem 'newrelic_rpm'
+ 
+ # better server than Webrick
+ gem "puma"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
