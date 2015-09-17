@@ -53,9 +53,12 @@ gem 'redcarpet'
 
  # performance monitoring tool
  gem 'newrelic_rpm'
- 
+
  # better server than Webrick
  gem "puma"
+
+ # object creation in test
+ gem 'factory_girl_rails', '~> 4.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
