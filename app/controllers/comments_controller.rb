@@ -25,10 +25,16 @@ class CommentsController < ApplicationController
 		@topic = @post.topic_id
 		authorize @comment
 		if @comment.destroy
-			redirect_to topic_post_path(@topic, @post), notice: 'Comment is deleted.'
+			flash[:notice] = "Comment is deleted."
+			# redirect_to topic_post_path(@topic, @post), notice: 'Comment is deleted.'
 		else
 			flash[:error] = "Error deleting comment."
-			redirect_to topic_post_path(@topoic, @post)
+			# redirect_to topic_post_path(@topoic, @post)
+		end
+
+		respond_to do |format|
+			format.html
+			format.js
 		end
 	end
 
