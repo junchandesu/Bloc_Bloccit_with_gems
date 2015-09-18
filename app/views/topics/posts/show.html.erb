@@ -29,11 +29,14 @@
    <%= render partial: "favorites/favorite", locals: { post: @post } %>
    </div>
  </div>
-
+ <div class="js-comments">
  <%= render partial: 'comments/comment', collection: @comments %>
+</div>
 <% if policy(@comments.new).create? %>
  <div class="row">
   <h4>Let's submit a new comment(minimum 5 letters required):</h4>
+ <div class='new-comment'>
   <%= render partial: 'comments/form', locals: { post: @post, comment: @comments.new } %>
+ </div>
  </div>
 <% end %> 

@@ -8,13 +8,19 @@ class CommentsController < ApplicationController
 		@topic = @post.topic_id
 		@comment = @post.comments.build(comment_params)
 		@comment.user = current_user
+		@new_comment = Comment.new
 		authorize @comment
 		if @comment.save
 			flash[:notice] = "Success commented."
-			redirect_to topic_post_path(@topic, @post)
+			# redirect_to topic_post_path(@topic, @post)
 		else
 			flash[:error] = "error saving the comments."
-			redirect_to topic_post_path(@topic, @post)
+			# redirect_to topic_post_path(@topic, @post)
+		end
+
+		respond_to do |format|
+			format.html
+			format.js
 		end
 
 	end
